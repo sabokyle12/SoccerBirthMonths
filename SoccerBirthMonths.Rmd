@@ -7,5 +7,16 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
 ```
+
+```{r}
+rawSoccerData <- read_csv("birthdates.csv")
+rawSoccerData
+rawSoccerData %>%
+  mutate(month = str_sub(value,7,8)) %>%
+  summarize(num_of_each_month = n(),
+            .groups = "drop")
+```
+
 
